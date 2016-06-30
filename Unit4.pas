@@ -18,10 +18,10 @@ type
     excluicidade: TButton;
     DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
-    Button4: TButton;
-    Button5: TButton;
-    Button6: TButton;
-    Button7: TButton;
+    inseriestado: TButton;
+    salvaestado: TButton;
+    excluiestado: TButton;
+    cancelaestado: TButton;
     conexao: TSQLConnection;
     qry_estado: TSQLQuery;
     dsp_estado: TDataSetProvider;
@@ -45,24 +45,27 @@ type
     cds_cidadeid: TIntegerField;
     cds_cidadeid_estado: TIntegerField;
     cds_cidadenome: TStringField;
-    Button8: TButton;
+    editaestado: TButton;
     editacidade: TButton;
     cancelacidade: TButton;
-    procedure Button4Click(Sender: TObject);
-    procedure Button5Click(Sender: TObject);
-    procedure Button6Click(Sender: TObject);
-    procedure Button7Click(Sender: TObject);
+    procedure inseriestadoClick(Sender: TObject);
+    procedure salvaestadoClick(Sender: TObject);
+    procedure excluiestadoClick(Sender: TObject);
+    procedure cancelaestadoClick(Sender: TObject);
     procedure insericidadeClick(Sender: TObject);
     procedure salvacidadeClick(Sender: TObject);
     procedure excluicidadeClick(Sender: TObject);
     procedure cds_estadoAfterDelete(DataSet: TDataSet);
     procedure cds_estadoAfterPost(DataSet: TDataSet);
-    procedure Button8Click(Sender: TObject);
+    procedure editaestadoClick(Sender: TObject);
     procedure editacidadeClick(Sender: TObject);
     procedure cancelacidadeClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure insercaocidade;
+    procedure insercaoestado;
     procedure normalcidade;
+     procedure normalestado;
     { Private declarations }
   public
     { Public declarations }
@@ -92,33 +95,43 @@ begin
   cds_cidade.delete;
 end;
 
-procedure TForm4.Button4Click(Sender: TObject);
+procedure TForm4.inseriestadoClick(Sender: TObject);
 begin
   cds_estado.Insert;
   insercaocidade;
+  normalestado;
 
 end;
 
-procedure TForm4.Button5Click(Sender: TObject);
+procedure TForm4.salvaestadoClick(Sender: TObject);
 begin
   cds_estado.post;
+  insercaoestado;
 end;
 
-procedure TForm4.Button6Click(Sender: TObject);
+procedure TForm4.excluiestadoClick(Sender: TObject);
 begin
   cds_estado.delete;
 end;
 
-procedure TForm4.Button7Click(Sender: TObject);
+procedure TForm4.FormCreate(Sender: TObject);
 begin
-  cds_estado.cancel;
-    insercaocidade;
+insercaoestado;
+insercaocidade;
 end;
 
-procedure TForm4.Button8Click(Sender: TObject);
+procedure TForm4.cancelaestadoClick(Sender: TObject);
+begin
+  cds_estado.cancel;
+  insercaocidade;
+  insercaoestado;
+end;
+
+procedure TForm4.editaestadoClick(Sender: TObject);
 begin
   cds_estado.Edit;
   insercaocidade;
+  normalestado;
 end;
 
 procedure TForm4.editacidadeClick(Sender: TObject);
@@ -133,7 +146,25 @@ begin
   insericidade.Enabled := true;
   editacidade.Enabled := true;
   excluicidade.Enabled := true;
-  cancelacidade.Enabled:=false;
+  cancelacidade.Enabled := false;
+end;
+
+procedure TForm4.insercaoestado;
+begin
+  salvaestado.Enabled := false;
+  inseriestado.Enabled := true;
+  editaestado.Enabled := true;
+  excluiestado.Enabled := true;
+  cancelaestado.Enabled := false;
+end;
+
+procedure TForm4.normalestado;
+begin
+  salvaestado.Enabled := true;
+  inseriestado.Enabled := false;
+  editaestado.Enabled := false;
+  excluiestado.Enabled := false;
+  cancelaestado.Enabled := true;
 end;
 
 procedure TForm4.normalcidade;
@@ -142,12 +173,12 @@ begin
   insericidade.Enabled := false;
   editacidade.Enabled := false;
   excluicidade.Enabled := false;
-    cancelacidade.Enabled:=true;
+  cancelacidade.Enabled := true;
 end;
 
 procedure TForm4.cancelacidadeClick(Sender: TObject);
 begin
-insercaocidade;
+  insercaocidade;
 end;
 
 procedure TForm4.cds_estadoAfterDelete(DataSet: TDataSet);
