@@ -2,8 +2,8 @@ object Form4: TForm4
   Left = 0
   Top = 0
   Caption = 'Form4'
-  ClientHeight = 273
-  ClientWidth = 868
+  ClientHeight = 412
+  ClientWidth = 754
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,7 +17,7 @@ object Form4: TForm4
   TextHeight = 13
   object DBEdit1: TDBEdit
     Left = 8
-    Top = 8
+    Top = 280
     Width = 289
     Height = 21
     DataField = 'nome'
@@ -26,7 +26,7 @@ object Form4: TForm4
   end
   object DBEdit2: TDBEdit
     Left = 303
-    Top = 7
+    Top = 279
     Width = 122
     Height = 21
     DataField = 'sigla'
@@ -35,7 +35,7 @@ object Form4: TForm4
   end
   object insericidade: TButton
     Left = 8
-    Top = 111
+    Top = 383
     Width = 75
     Height = 25
     Caption = 'inserir cidade'
@@ -44,7 +44,7 @@ object Form4: TForm4
   end
   object salvacidade: TButton
     Left = 89
-    Top = 111
+    Top = 383
     Width = 75
     Height = 25
     Caption = 'salvar cidade'
@@ -53,7 +53,7 @@ object Form4: TForm4
   end
   object excluicidade: TButton
     Left = 251
-    Top = 111
+    Top = 383
     Width = 75
     Height = 25
     Caption = 'excluir cidade'
@@ -61,9 +61,9 @@ object Form4: TForm4
     OnClick = excluicidadeClick
   end
   object DBGrid1: TDBGrid
-    Left = 431
-    Top = 144
-    Width = 430
+    Left = 8
+    Top = 134
+    Width = 561
     Height = 120
     DataSource = ds_cidade
     TabOrder = 5
@@ -90,9 +90,9 @@ object Form4: TForm4
       end>
   end
   object DBGrid2: TDBGrid
-    Left = 431
+    Left = 8
     Top = 8
-    Width = 430
+    Width = 561
     Height = 120
     DataSource = ds_estado
     TabOrder = 6
@@ -125,7 +125,7 @@ object Form4: TForm4
   end
   object inseriestado: TButton
     Left = 8
-    Top = 35
+    Top = 307
     Width = 75
     Height = 25
     Caption = 'inserir estado'
@@ -134,7 +134,7 @@ object Form4: TForm4
   end
   object salvaestado: TButton
     Left = 89
-    Top = 35
+    Top = 307
     Width = 75
     Height = 25
     Caption = 'salvar estado'
@@ -143,7 +143,7 @@ object Form4: TForm4
   end
   object excluiestado: TButton
     Left = 170
-    Top = 35
+    Top = 307
     Width = 75
     Height = 25
     Caption = 'excluir estado'
@@ -152,7 +152,7 @@ object Form4: TForm4
   end
   object cancelaestado: TButton
     Left = 332
-    Top = 34
+    Top = 306
     Width = 93
     Height = 25
     Caption = 'cancelar estado'
@@ -161,7 +161,7 @@ object Form4: TForm4
   end
   object DBEdit3: TDBEdit
     Left = 8
-    Top = 79
+    Top = 351
     Width = 417
     Height = 21
     DataField = 'nome'
@@ -170,7 +170,7 @@ object Form4: TForm4
   end
   object editaestado: TButton
     Left = 251
-    Top = 34
+    Top = 306
     Width = 75
     Height = 25
     Caption = 'editar estado'
@@ -179,7 +179,7 @@ object Form4: TForm4
   end
   object editacidade: TButton
     Left = 170
-    Top = 111
+    Top = 383
     Width = 75
     Height = 25
     Caption = 'editar cidade'
@@ -188,7 +188,7 @@ object Form4: TForm4
   end
   object cancelacidade: TButton
     Left = 332
-    Top = 111
+    Top = 383
     Width = 93
     Height = 25
     Caption = 'cancelar cidade'
@@ -210,8 +210,8 @@ object Form4: TForm4
       'EnableBoolean=False'
       'IPVersion=IPv4')
     Connected = True
-    Left = 8
-    Top = 160
+    Left = 440
+    Top = 280
   end
   object qry_estado: TSQLQuery
     Active = True
@@ -220,8 +220,8 @@ object Form4: TForm4
     SQL.Strings = (
       'select * from estado')
     SQLConnection = conexao
-    Left = 80
-    Top = 160
+    Left = 512
+    Top = 280
     object qry_estadoid_estado: TIntegerField
       FieldName = 'id_estado'
     end
@@ -237,8 +237,8 @@ object Form4: TForm4
   object dsp_estado: TDataSetProvider
     DataSet = qry_estado
     Options = [poIncFieldProps, poAutoRefresh, poPropogateChanges, poAllowCommandText, poUseQuoteChar]
-    Left = 144
-    Top = 160
+    Left = 576
+    Top = 280
   end
   object cds_estado: TClientDataSet
     Active = True
@@ -247,8 +247,8 @@ object Form4: TForm4
     ProviderName = 'dsp_estado'
     AfterPost = cds_estadoAfterPost
     AfterDelete = cds_estadoAfterDelete
-    Left = 216
-    Top = 160
+    Left = 648
+    Top = 280
     object cds_estadoid_estado: TIntegerField
       FieldName = 'id_estado'
     end
@@ -266,13 +266,13 @@ object Form4: TForm4
   end
   object ds_estado: TDataSource
     DataSet = cds_estado
-    Left = 280
-    Top = 160
+    Left = 712
+    Top = 280
   end
   object ds_estado_cidade: TDataSource
     DataSet = qry_estado
-    Left = 8
-    Top = 216
+    Left = 440
+    Top = 336
   end
   object qry_cidade: TSQLQuery
     Active = True
@@ -287,8 +287,8 @@ object Form4: TForm4
     SQL.Strings = (
       'select * from cidade where id_estado= :id_estado')
     SQLConnection = conexao
-    Left = 80
-    Top = 216
+    Left = 512
+    Top = 336
     object qry_cidadeid: TIntegerField
       FieldName = 'id'
     end
@@ -305,8 +305,8 @@ object Form4: TForm4
     Aggregates = <>
     DataSetField = cds_estadoqry_cidade
     Params = <>
-    Left = 216
-    Top = 216
+    Left = 648
+    Top = 336
     object cds_cidadeid: TIntegerField
       FieldName = 'id'
     end
@@ -320,7 +320,7 @@ object Form4: TForm4
   end
   object ds_cidade: TDataSource
     DataSet = cds_cidade
-    Left = 280
-    Top = 216
+    Left = 712
+    Top = 344
   end
 end

@@ -65,7 +65,7 @@ type
     procedure insercaocidade;
     procedure insercaoestado;
     procedure normalcidade;
-     procedure normalestado;
+    procedure normalestado;
     { Private declarations }
   public
     { Public declarations }
@@ -82,6 +82,7 @@ procedure TForm4.insericidadeClick(Sender: TObject);
 begin
   cds_cidade.Insert;
   normalcidade;
+  DBEdit3.SetFocus;
 end;
 
 procedure TForm4.salvacidadeClick(Sender: TObject);
@@ -100,6 +101,7 @@ begin
   cds_estado.Insert;
   insercaocidade;
   normalestado;
+  DBEdit1.SetFocus;
 
 end;
 
@@ -116,8 +118,8 @@ end;
 
 procedure TForm4.FormCreate(Sender: TObject);
 begin
-insercaoestado;
-insercaocidade;
+  insercaoestado;
+  insercaocidade;
 end;
 
 procedure TForm4.cancelaestadoClick(Sender: TObject);
@@ -132,12 +134,14 @@ begin
   cds_estado.Edit;
   insercaocidade;
   normalestado;
+  DBEdit1.SetFocus;
 end;
 
 procedure TForm4.editacidadeClick(Sender: TObject);
 begin
   cds_cidade.Edit;
   normalcidade;
+  DBEdit3.SetFocus;
 end;
 
 procedure TForm4.insercaocidade;
