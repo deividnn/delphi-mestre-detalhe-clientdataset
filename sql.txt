@@ -1,0 +1,25 @@
+CREATE TABLE `estado` (
+	`id_estado` INT(11) NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(50) NOT NULL DEFAULT '0',
+	`sigla` VARCHAR(2) NOT NULL DEFAULT '0',
+	INDEX `Index 1` (`id_estado`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=13
+;
+
+
+
+CREATE TABLE `cidade` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`id_estado` INT(11) NULL DEFAULT NULL,
+	`nome` VARCHAR(50) NOT NULL DEFAULT '0',
+	INDEX `Index 1` (`id`),
+	INDEX `FK_cidade_estado` (`id_estado`),
+	CONSTRAINT `FK_cidade_estado` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=25
+;
